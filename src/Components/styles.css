@@ -14,7 +14,7 @@
     text-align: center;
 }
 
-.button {
+.button,.add,.remove {
     background-color: bisque;
     text-decoration: inherit;
     border-radius: 8px;
@@ -29,10 +29,12 @@
     transition: border-color 0.25s;
 }
 
-.button:hover {
-    border-color: #646cff;
+.button:hover,.add:hover {
+    border-color: #06fe12;
 }
-
+.remove:hover {
+    border-color: #fe2b06;
+}
 .button:focus,
 .button:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;

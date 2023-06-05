@@ -1,15 +1,24 @@
 /* eslint-disable react/prop-types */
 
-
-const SingleProduct = ({prod,key}) => {
+const SingleProduct = ({ prod, key, cart, setCart }) => {
   return (
     <div className='products'>
       <img src={prod.image} alt={prod.name}></img>
       <div className="productDesc">
-        <span style={{fontWeight:700}}>{prod.name}</span>
-        <span>$ {prod.price.substring(0,3)}</span>
+        <span style={{ fontWeight: 700 }}>{prod.name}</span>
+        <span> ${prod.price.substring(0, 3)}</span>
       </div>
-      <button className="add">Add to cart</button>
+
+      {cart.includes(prod) ? 
+       <button className="remove" onClick={() => {
+        setCart(cart.filter(c => c.id !== prod.id))
+      }}>Remove from cart</button>
+      : <button className="add" onClick={() => {
+        setCart([...cart, prod])
+      }}>Add to cart</button>
+      }
+
+
     </div>
   )
 }

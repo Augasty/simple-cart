@@ -3,7 +3,8 @@ import { useState } from "react"
 import SingleProduct from "./Single_Product/SingleProduct"
 import './styles.css'
 
-const Home = () => {
+faker.seed(100)
+const Home = ({cart,setCart}) => {
     const productsArray = [...Array(20)].map(() => ({
         id: faker.datatype.uuid(),
         name: faker.commerce.productName(),
@@ -11,14 +12,15 @@ const Home = () => {
         image: faker.random.image()
     }))
     // console.log(productsArray)
+    console.log(cart)
 
     const [products] = useState(productsArray)
     return (
         <div>
             <>Home</>
             <div className="prodCont">
-                {products.map((prod, key) => (
-                    <SingleProduct prod={prod} key={key} />))}
+                {products.map((prod) => (
+                    <SingleProduct prod={prod} key={prod.id} cart={cart} setCart={setCart}/>))}
             </div>
         </div>
     )
