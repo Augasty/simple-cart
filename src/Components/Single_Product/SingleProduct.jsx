@@ -1,6 +1,12 @@
 /* eslint-disable react/prop-types */
 
-const SingleProduct = ({ prod, key, cart, setCart }) => {
+import { useContext } from "react"
+import { CartContext } from "../../Context"
+
+const SingleProduct = ({ prod}) => {
+  const {cart,setCart} = useContext(CartContext)
+
+
   return (
     <div className='products'>
       <img src={prod.image} alt={prod.name}></img>
